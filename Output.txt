@@ -1,0 +1,224 @@
+---------------------------------
+Run - 1
+
+LINE  POSITION   NAME
+19949 1          Boris Drubetskoy
+21953 2          Makar Alexeevich
+22173 9          Boris Drubetskoy
+23982 39         Boris Drubetskoy
+24033 54         Boris Drubetskoy
+29439 31         Boris Drubetskoy
+29614 28         Boris Drubetskoy
+33007 1          Boris Drubetskoy
+41110 22         Boris Drubetskoy
+46612 19         Joseph Bazdeev  
+46622 28         Makar Alexeevich
+46626 18         Makar Alexeevich
+46626 39         Joseph Bazdeev  
+46642 20         Joseph Bazdeev  
+46689 11         Makar Alexeevich
+48300 11         Makar Alexeevich
+48314 42         Makar Alexeevich
+48317 10         Makar Alexeevich
+48326 38         Makar Alexeevich
+48336 13         Makar Alexeevich
+48347 28         Makar Alexeevich
+48407 53         Makar Alexeevich
+48409 19         Makar Alexeevich
+48415 8          Makar Alexeevich
+48433 24         Makar Alexeevich
+48435 1          Makar Alexeevich
+Elapsed time: 121ms
+
+---------------------------------
+Run - 2
+
+ LINE POSITION   NAME
+19949 1          Boris Drubetskoy
+21953 2          Makar Alexeevich
+22173 9          Boris Drubetskoy
+23982 39         Boris Drubetskoy
+24033 54         Boris Drubetskoy
+29439 31         Boris Drubetskoy
+29614 28         Boris Drubetskoy
+33007 1          Boris Drubetskoy
+41110 22         Boris Drubetskoy
+46612 19         Joseph Bazdeev  
+46622 28         Makar Alexeevich
+46626 18         Makar Alexeevich
+46626 39         Joseph Bazdeev  
+46642 20         Joseph Bazdeev  
+46689 11         Makar Alexeevich
+48300 11         Makar Alexeevich
+48314 42         Makar Alexeevich
+48317 10         Makar Alexeevich
+48326 38         Makar Alexeevich
+48336 13         Makar Alexeevich
+48347 28         Makar Alexeevich
+48407 53         Makar Alexeevich
+48409 19         Makar Alexeevich
+48415 8          Makar Alexeevich
+48433 24         Makar Alexeevich
+48435 1          Makar Alexeevich
+Elapsed time: 118ms
+
+---------------------------------
+Run - 3
+
+ LINE POSITION   NAME
+19949 1          Boris Drubetskoy
+21953 2          Makar Alexeevich
+22173 9          Boris Drubetskoy
+23982 39         Boris Drubetskoy
+24033 54         Boris Drubetskoy
+29614 28         Boris Drubetskoy
+33007 1          Boris Drubetskoy
+41110 22         Boris Drubetskoy
+46612 19         Joseph Bazdeev
+46622 28         Makar Alexeevich
+46626 18         Makar Alexeevich
+46626 39         Joseph Bazdeev
+46642 20         Joseph Bazdeev
+46689 11         Makar Alexeevich
+48300 11         Makar Alexeevich
+48314 42         Makar Alexeevich
+48317 10         Makar Alexeevich
+48326 38         Makar Alexeevich
+48336 13         Makar Alexeevich
+48347 28         Makar Alexeevich
+48407 53         Makar Alexeevich
+48409 19         Makar Alexeevich
+48415 8          Makar Alexeevich
+48433 24         Makar Alexeevich
+48435 1          Makar Alexeevich
+Elapsed time: 152ms
+
+---------------------------------
+Run - 4
+
+ LINE POSITION   NAME
+19949 1          Boris Drubetskoy
+21953 2          Makar Alexeevich
+22173 9          Boris Drubetskoy
+23982 39         Boris Drubetskoy
+24033 54         Boris Drubetskoy
+29614 28         Boris Drubetskoy
+33007 1          Boris Drubetskoy
+41110 22         Boris Drubetskoy
+46612 19         Joseph Bazdeev
+46622 28         Makar Alexeevich
+46626 18         Makar Alexeevich
+46626 39         Joseph Bazdeev
+46642 20         Joseph Bazdeev
+46689 11         Makar Alexeevich
+48300 11         Makar Alexeevich
+48314 42         Makar Alexeevich
+48317 10         Makar Alexeevich
+48326 38         Makar Alexeevich
+48336 13         Makar Alexeevich
+48347 28         Makar Alexeevich
+48407 53         Makar Alexeevich
+48409 19         Makar Alexeevich
+48415 8          Makar Alexeevich
+48433 24         Makar Alexeevich
+48435 1          Makar Alexeevich
+Elapsed time: 138ms
+
+---------------------------------
+Run - 5
+
+ LINE POSITION   NAME
+19949 1          Boris Drubetskoy
+21953 2          Makar Alexeevich
+22173 9          Boris Drubetskoy
+23982 39         Boris Drubetskoy
+24033 54         Boris Drubetskoy
+29614 28         Boris Drubetskoy
+33007 1          Boris Drubetskoy
+41110 22         Boris Drubetskoy
+46612 19         Joseph Bazdeev
+46622 28         Makar Alexeevich
+46626 18         Makar Alexeevich
+46626 39         Joseph Bazdeev
+46642 20         Joseph Bazdeev
+46689 11         Makar Alexeevich
+48300 11         Makar Alexeevich
+48314 42         Makar Alexeevich
+48317 10         Makar Alexeevich
+48326 38         Makar Alexeevich
+48336 13         Makar Alexeevich
+48347 28         Makar Alexeevich
+48407 53         Makar Alexeevich
+48409 19         Makar Alexeevich
+48415 8          Makar Alexeevich
+48433 24         Makar Alexeevich
+48435 1          Makar Alexeevich
+Elapsed time: 137ms
+
+---------------------------------
+Run - 6
+
+ LINE POSITION   NAME
+19949 1          Boris Drubetskoy
+21953 2          Makar Alexeevich
+22173 9          Boris Drubetskoy
+23982 39         Boris Drubetskoy
+24033 54         Boris Drubetskoy
+29439 31         Boris Drubetskoy
+29614 28         Boris Drubetskoy
+33007 1          Boris Drubetskoy
+41110 22         Boris Drubetskoy
+46612 19         Joseph Bazdeev
+46622 28         Makar Alexeevich
+46626 18         Makar Alexeevich
+46626 39         Joseph Bazdeev
+46642 20         Joseph Bazdeev
+46689 11         Makar Alexeevich
+48300 11         Makar Alexeevich
+48314 42         Makar Alexeevich
+48317 10         Makar Alexeevich
+48326 38         Makar Alexeevich
+48336 13         Makar Alexeevich
+48347 28         Makar Alexeevich
+48407 53         Makar Alexeevich
+48409 19         Makar Alexeevich
+48415 8          Makar Alexeevich
+48433 24         Makar Alexeevich
+48435 1          Makar Alexeevich
+Elapsed time: 141ms
+
+---------------------------------
+Run - 7
+
+ LINE POSITION   NAME
+19949 1          Boris Drubetskoy
+21953 2          Makar Alexeevich
+22173 9          Boris Drubetskoy
+23982 39         Boris Drubetskoy
+24033 54         Boris Drubetskoy
+29439 31         Boris Drubetskoy
+29614 28         Boris Drubetskoy
+33007 1          Boris Drubetskoy
+41110 22         Boris Drubetskoy
+46612 19         Joseph Bazdeev
+46622 28         Makar Alexeevich
+46626 18         Makar Alexeevich
+46626 39         Joseph Bazdeev
+46642 20         Joseph Bazdeev
+46689 11         Makar Alexeevich
+48300 11         Makar Alexeevich
+48314 42         Makar Alexeevich
+48317 10         Makar Alexeevich
+48326 38         Makar Alexeevich
+48336 13         Makar Alexeevich
+48347 28         Makar Alexeevich
+48407 53         Makar Alexeevich
+48409 19         Makar Alexeevich
+48415 8          Makar Alexeevich
+48433 24         Makar Alexeevich
+48435 1          Makar Alexeevich
+Elapsed time: 148ms
+
+---------------------------------
+
+Median time across 7 runs = 136.429ms
