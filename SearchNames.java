@@ -1,3 +1,10 @@
+/*
+    CS 146    - Assignment: 1
+    Professor - Vidya Rangasayee
+    Student   - Alvin Dang
+    Date      - 9/20/2023
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,6 +20,8 @@ public class SearchNames {
             "Boris Drubetskoy"};
 
         String readFile = "WarAndPeace.txt";
+
+        System.out.printf("%-5s %-10s %s%n"," LINE", "POSITION", "NAME");
 
         try(BufferedReader in = new BufferedReader(
             new FileReader(readFile))) {
@@ -43,11 +52,11 @@ public class SearchNames {
                     int pos = mergedLine.indexOf(findName);
                     while(pos != -1) {
                         // Adjust position by subtracting the length 
-                        //     of the last word
+                        // of the last word
                         int adjPos = pos - prevWord.length();
 
                         // Print the line num, char pos, and the name found
-                        System.out.printf("%d %d %s%n", lineNum, 
+                        System.out.printf("%-5d %-10d %s%n", lineNum, 
                             adjPos + 1, findName);
 
                         // Look for the the name again
@@ -62,6 +71,8 @@ public class SearchNames {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Calculate and print the elapsed time
         long elapsed = System.currentTimeMillis() - start;
         System.out.println("Elapsed time: " + elapsed + "ms");
     }
