@@ -1,0 +1,497 @@
+attempt one
+
+public class twoThreeTree {
+    private Integer myFirstItem;
+    private Integer mySecondItem; //should be null in the one key case
+    private Integer myThirdItem; //null in 1 & 2 key cases. !null in 3 key case (split)
+    private twoThreeTree myLeft;
+    private twoThreeTree myCenter; //should be null in the one key case
+    private twoThreeTree myRight;
+    private twoThreeTree myParent;
+
+    // constructor for TwoThreeTree with no items
+    public twoThreeTree() {
+        myFirstItem = null;
+        mySecondItem = null;
+        myThirdItem = null;
+        myLeft = null;
+        myCenter = null;
+        myRight = null;
+        myParent = null;
+    }
+
+    // constructor for TwoThreeTree with one item
+    public twoThreeTree(int startItem) {
+        myFirstItem = startItem;
+        mySecondItem = null;
+        myThirdItem = null;
+        myLeft = null;
+        myCenter = null;
+        myRight = null;
+        myParent = null;
+    }
+
+    // Function to delete a node
+    private void delete(twoThreeTree nodeToDelete) {
+        /*// If node to delete is a leaf node, delete it
+        if (nodeToDelete.myLeft == null && nodeToDelete.myCenter == null && nodeToDelete.myRight == null) {
+            
+            // Check if node to delete has a parent 
+            //  (Must remove all references to nodeToDelete to free memory)
+            if (nodeToDelete.myParent != null) {
+                // Check if node to delete is the left child of its parent
+                if (nodeToDelete.myParent.myLeft == nodeToDelete) {
+                    nodeToDelete.myParent.myLeft = null;
+                }
+                // ELIF node to delete is the center child of its parent
+                else if (nodeToDelete.myParent.myCenter == nodeToDelete) {
+                    nodeToDelete.myParent.myCenter = null;
+                }
+                // ELSE node to delete is the right child of its parent
+                else {
+                    nodeToDelete.myParent.myRight = null;
+                }
+            }
+        }
+        // ELSE node to delete is not a leaf node
+        else {
+            // Check if node to delete has a parent 
+            //  (Must remove all references to nodeToDelete to free memory)
+            if (nodeToDelete.myParent != null) {
+                // Check if node to delete is the left child of its parent
+                if (nodeToDelete.myParent.myLeft == nodeToDelete) {
+                    nodeToDelete.myParent.myLeft = null;
+                }
+                // ELIF node to delete is the center child of its parent
+                else if (nodeToDelete.myParent.myCenter == nodeToDelete) {
+                    nodeToDelete.myParent.myCenter = null;
+                }
+                // ELSE node to delete is the right child of its parent
+                else {
+                    nodeToDelete.myParent.myRight = null;
+                }
+            }
+            // Check if node to delete has a left child
+            if (nodeToDelete.myLeft != null) {
+                // Check if node to delete has a center child
+                if (nodeToDelete.myCenter != null) {
+                    // Check if node to delete has a right child
+                    if (nodeToDelete.myRight != null) {
+                        // Node to delete has 3 children. Cannot delete.
+                        System.out.println("Cannot delete node with 3 children.");
+                    }
+                    // ELSE node to delete has no right child
+                    else {
+                        // Check if node to delete's left child has a center child
+                        if (nodeToDelete.myLeft.myCenter != null) {
+                            // Check if node to delete's left child's center child has a center child
+                            if (nodeToDelete.myLeft.myCenter.myCenter != null) {
+                                // Node to delete's left child's center child has a center child.
+                                //  Move node to delete's left child's center child's center child to node to delete's center child
+                                nodeToDelete.myCenter = nodeToDelete.myLeft.myCenter.myCenter;
+                                nodeToDelete.myCenter.myParent = nodeToDelete;
+                                // Delete node to delete's left child's center child
+                                delete(nodeToDelete.myLeft.myCenter.myCenter);
+                            }
+                            // ELSE node to delete's left child's center child does not have a center child
+                            else {
+                                // Node to delete's left child's center child does not have a center child.
+                                //  Move node to delete's left child's center child to node to delete's center child
+                                nodeToDelete.myCenter = nodeToDelete
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        */
+        nodeToDelete = null;
+    }
+    
+    // Function to push a node's item up to its parent
+    private void middleUp(twoThreeTree nodeToPush) {
+        // Check if nodeToPush's parent has a second item
+        if(nodeToPush.myParent.mySecondItem != null) {
+            // nodeToPush's parent has a second item. Check if it has a center child.
+            if(nodeToPush.myParent.myCenter != null) {
+                // nodeToPush's parent has a center child. Check if nodeToPush is the left child
+                if(nodeToPush.myParent.myLeft == nodeToPush) {
+                    // nodeToPush is the left child. Move nodeToPush's second item to its parent's first item
+                    nodeToPush.myParent.myFirstItem = nodeToPush.mySecondItem;
+                }
+                // ELIF nodeToPush is the center child
+                else if(nodeToPush.myParent.myCenter == nodeToPush) {
+                    // nodeToPush is the center child. Move nodeToPush's second item to its parent's second item
+                    nodeToPush.myParent.mySecondItem = nodeToPush.mySecondItem;
+                }
+                // ELSE nodeToPush is the right child
+                else {
+                    // nodeToPush is the right child. Check where nodeToPush's second item goes
+                    if(nodeToPush.mySecondItem < nodeToPush.myParent.myFirstItem) {
+                        // nodeToPush's second item is its parents new first item. Rebalance.
+                        nodeToPush.myParent.myThirdItem = nodeToPush.myParent.mySecondItem;
+                        nodeToPush.myParent.mySecondItem = nodeToPush.mySecondItem;
+                    }
+                    else if(nodeToPush.mySecondItem > nodeToPush.myParent.myFirstItem && 
+                        nodeToPush.mySecondItem < nodeToPush.myParent.mySecondItem) {
+                        // nodeToPush's second item is its parents new second item. Rebalance.
+                        nodeToPush.myParent.myThirdItem = nodeToPush.myParent.mySecondItem;
+                        nodeToPush.myParent.mySecondItem = nodeToPush.mySecondItem;
+                    }
+                    else {
+                        // nodeToPush's second item is its parents new third item. Rebalance.
+                        nodeToPush.myParent.myThirdItem = nodeToPush.mySecondItem;
+
+                    }
+                    nodeToPush.myParent.myThirdItem = nodeToPush.mySecondItem;
+                }
+            }
+
+            // Check if nodeToPush's second item is its parents new second item
+            if(nodeToPush.mySecondItem > nodeToPush.myParent.myFirstItem && 
+                nodeToPush.myParent.mySecondItem < nodeToPush.mySecondItem) { 
+                // nodeToPush's second item is its parents new second item. Rebalance.
+                nodeToPush.myParent.myThirdItem = nodeToPush.myParent.mySecondItem;
+                nodeToPush.myParent.mySecondItem = nodeToPush.mySecondItem;
+
+                // Check if nodeToPush's parent has a center child
+                
+
+                split(nodeToPush.myParent);
+            }
+        }
+    }
+
+    // Function to split a node into 3 nodes
+    private void split(twoThreeTree nodeToSplit) {
+        // Middle up. Rebalance the tree. Send element 2's (of 3) item up to the parent node.
+        middleUp(nodeToSplit);
+
+        // Create a new parent node with element 2's (of 3) item
+        twoThreeTree myNewParent = new twoThreeTree(nodeToSplit.mySecondItem);
+        // Create a new left child node with element 1's (of 3) item
+        twoThreeTree myNewLeft = new twoThreeTree(nodeToSplit.myFirstItem);
+        // Create a new right child node with element 3's (of 3) item
+        twoThreeTree myNewRight = new twoThreeTree(nodeToSplit.myThirdItem);
+
+        // New parent/childs created. Now, set the parent/child pointers
+        // Left child
+        myNewLeft.myParent = myNewParent;
+        myNewParent.myLeft = myNewLeft;
+
+        // Right child
+        myNewRight.myParent = myNewParent;
+        myNewParent.myRight = myNewRight;
+
+        // Set new parent's parent pointer and vice versa
+        myNewParent.myParent = nodeToSplit.myParent;
+        // Check to see if myNewParent is the left, center, or right child of its parent
+        //  and set the appropriate pointer
+        if (myNewParent.myParent.myLeft == nodeToSplit) { // left child
+            myNewParent.myParent.myLeft = myNewParent;
+        }
+        else if (myNewParent.myParent.myCenter == nodeToSplit) { // center child
+            myNewParent.myParent.myCenter = myNewParent;
+        }
+        else { // right child
+            myNewParent.myParent.myRight = myNewParent;
+        }
+
+        // All nodes references set. Delete old node (nodeToSplit)
+        delete(nodeToSplit);
+    }
+
+    // maintains the 2-3 tree balance invariants
+    public void insert (int item) {
+        // YOUR CODE HERE
+        // Case 0: If tree is null, make a new tree with item as the root
+        if (myFirstItem == null) {
+            myFirstItem = item;
+        }
+        // Case 1: Item is to be inserted into a node w/ 1 element
+        else if (mySecondItem == null) {
+            // If current node is root node with no child nodes, insert the item into the current node
+            if (myParent == null && myLeft == null && myCenter == null && myRight == null) {
+                if (item < myFirstItem) {
+                    mySecondItem = myFirstItem;
+                    myFirstItem = item;
+                }
+                else {
+                    mySecondItem = item;
+                }
+            }
+            // ELIF current node is root node with child nodes (DO NOT INSERT), SEND the item to the appropriate child
+            else if (myParent == null && (myLeft != null || myRight != null || myCenter != null)) {
+                // If item to insert is less than the first data element, insert it to the left child
+                if (item < myFirstItem) {
+                    // If the left child is null, make a new tree with item as the root
+                    if (myLeft == null) {
+                        myLeft = new twoThreeTree(item);
+                        myLeft.myParent = this;
+                    }
+                    // If the left child is not null, insert the item into the left child
+                    else {
+                        myLeft.insert(item);
+                    }
+                }
+                // ELIF item to insert is greater than first data element, insert it to the right child
+                else {
+                    // If the right child is null, make a new tree with item as the root
+                    if (myRight == null) {
+                        myRight = new twoThreeTree(item);
+                        myRight.myParent = this;
+                    }
+                    // ELIF the right child is not null, insert the item into the right child
+                    else {
+                        myRight.insert(item);
+                    }
+                }
+            }
+            // ELIF current node is a leaf node, insert the item into the current node
+            else if (myLeft == null && myCenter == null && myRight == null && myParent != null) {
+                if (item < myFirstItem) {
+                    mySecondItem = myFirstItem;
+                    myFirstItem = item;
+                }
+                else {
+                    mySecondItem = item;
+                }
+            }
+            // ELSE: If current node is not a leaf node (DO NOT INSERT), 
+            //          insert the item into the appropriate child
+            else {
+                // If item to insert is less than the first data element, insert it to the left child
+                if (item < myFirstItem) {
+                    // If the left child is null, make a new tree with item as the root
+                    if (myLeft == null) {
+                        myLeft = new twoThreeTree(item);
+                        myLeft.myParent = this;
+                    }
+                    // ELIF the left child is not null, insert the item into the left child
+                    else {
+                        myLeft.insert(item);
+                    }
+                }
+                // ELIF item to insert is greater than first data element, insert it to the right child
+                else {
+                    // If the right child is null, make a new tree with item as the root
+                    if (myRight == null) {
+                        myRight = new twoThreeTree(item);
+                        myRight.myParent = this;
+                    }
+                    // ELIF the right child is not null, insert the item into the right child
+                    else {
+                        myRight.insert(item);
+                    }
+                }
+            }
+        }
+        // Case 2: Item is to be inserted into a node w/ 2 elements whose parent only has 1 element
+        else if (myParent.mySecondItem == null) {
+            // If current node is root node with no child nodes, insert the item into the current node
+            if (myParent == null && myLeft == null && myCenter == null && myRight == null) {
+                if (item < myFirstItem) {
+                    mySecondItem = myFirstItem;
+                    myFirstItem = item;
+                }
+                else {
+                    mySecondItem = item;
+                }
+            }
+            // ELIF current node is root node with child nodes (DO NOT INSERT), SEND the item to the appropriate child
+            else if (myParent == null && (myLeft != null || myRight != null || myCenter != null)) {
+                // If item to insert is less than the first data element, insert it to the left child
+                if (item < myFirstItem) {
+                    // If the left child is null, make a new tree with item as the root
+                    if (myLeft == null) {
+                        myLeft = new twoThreeTree(item);
+                        myLeft.myParent = this;
+                    }
+                    // If the left child is not null, insert the item into the left child
+                    else {
+                        myLeft.insert(item);
+                    }
+                }
+                // ELIF item to insert is greater than first data element, insert it to the right child
+                else {
+                    // If the right child is null, make a new tree with item as the root
+                    if (myRight == null) {
+                        myRight = new twoThreeTree(item);
+                        myRight.myParent = this;
+                    }
+                    // ELIF the right child is not null, insert the item into the right child
+                    else {
+                        myRight.insert(item);
+                    }
+                }
+            }
+            // ELIF current node is a leaf node, insert the item into the current node
+            else if (myLeft == null && myCenter == null && myRight == null && myParent != null) {
+                // Check if leaf nodes is full (2 elements)
+                if (myFirstItem != null && mySecondItem != null)
+                {
+                    // Check if item is in between the two elements
+                    if (item > myFirstItem && item < mySecondItem) {
+                        myThirdItem = mySecondItem;
+                        mySecondItem = item;
+
+                        // Node too big. Split it.
+                        split(this);
+                    }
+                    // ELIF Check if item is less than the first element WIP WIP WIP ******
+                    else if (item < myFirstItem) {
+                        myCenter = new twoThreeTree(myFirstItem);
+                        myCenter.myParent = this;
+                        myFirstItem = item;
+                    }
+                }
+                if (item < myFirstItem) {
+                    mySecondItem = myFirstItem;
+                    myFirstItem = item;
+                }
+                else {
+                    mySecondItem = item;
+                }
+            }
+            // ELSE: If current node is not a leaf node (DO NOT INSERT), 
+            //          insert the item into the appropriate child
+            else { 
+            /*// Case 2a: If item to insert is less than the first data element, insert it to the left child
+            if (item < myFirstItem) {
+                // Case 2a1: If the left child is null, make a new tree with item as the root
+                if (myLeft == null) {
+                    myLeft = new twoThreeTree(item);
+                    myLeft.myParent = this;
+                }
+                // Case 2a2: If the left child is not null, insert the item into the left child
+                else {
+                    myLeft.insert(item);
+                }
+            }
+            // Case 2b: If item to insert is greater than the second data element, insert it to the right child
+            else if (item > mySecondItem) {
+                // Case 2b1: If the right child is null, make a new tree with item as the root
+                if (myRight == null) {
+                    myRight = new twoThreeTree(item);
+                    myRight.myParent = this;
+                }
+                // Case 2b2: If the right child is not null, insert the item into the right child
+                else {
+                    myRight.insert(item);
+                }
+            }
+            // Case 2c: If item to insert is between the two data elements, insert it to the center (middle up)
+            else {
+                // Case 2c1: If the center child is null, make a new tree with item as the root
+                if (myCenter == null) {
+                    myCenter = new twoThreeTree(item);
+                    myCenter.myParent = this;
+                }
+                // Case 2c2: If the center child is not null, insert the item into the center child
+                else {
+                    myCenter.insert(item);
+                }
+            }*/
+            }
+        }
+        // Case 3: Item is to be intserted into a node w/ 2 elements whose parent has 2 elements
+        else {
+            // Case 3a: If item to insert is less than the first data element, insert it to the left child
+            if (item < myFirstItem) {
+                // Case 3a1: If the left child is null, make a new tree with item as the root
+                if (myLeft == null) {
+                    myLeft = new twoThreeTree(item);
+                    myLeft.myParent = this;
+                }
+                // Case 3a2: If the left child is not null, insert the item into the left child
+                else {
+                    myLeft.insert(item);
+                }
+            }
+            // Case 3b: If item to insert is greater than the second data element, insert it to the right child
+            else if (item > mySecondItem) {
+                // Case 3b1: If the right child is null, make a new tree with item as the root
+                if (myRight == null) {
+                    myRight = new twoThreeTree(item);
+                    myRight.myParent = this;
+                }
+                // Case 3b2: If the right child is not null, insert the item into the right child
+                else {
+                    myRight.insert(item);
+                }
+            }
+            // Case 3c: If item to insert is between the two data elements, insert it to the center (middle up)
+            else {
+                // Case 3c1: If the center child is null, make a new tree with item as the root
+                if (myCenter == null) {
+                    myCenter = new twoThreeTree(item);
+                    myCenter.myParent = this;
+                }
+                // Case 3c2: If the center child is not null, insert the item into the center child
+                else {
+                    myCenter.insert(item);
+                }
+            }
+        }
+        /*if (mySecondItem == null) { //there is only one key in the current node
+            if (item < myFirstItem) { //item is smaller than the current key
+                if (myLeft == null) { //there is no left child
+                    myLeft = new twoThreeTree(item);
+                    myLeft.myParent = this;
+                } else { //there is a left child
+                    myLeft.insert(item);
+                }
+            } else { //item is larger than the current key
+                if (myRight == null) { //there is no right child
+                    myRight = new twoThreeTree(item);
+                    myRight.myParent = this;
+                } else { //there is a right child
+                    myRight.insert(item);
+                }
+            }
+        } else { //there are two keys in the current node
+            if (item < myFirstItem) { //item is smaller than the current key
+                if (myLeft == null) { //there is no left child
+                    myLeft = new twoThreeTree(item);
+                    myLeft.myParent = this;
+                } else { //there is a left child
+                    myLeft.insert(item);
+                }
+            } else if (item > mySecondItem) { //item is larger than the current key
+                if (myRight == null) { //there is no right child
+                    myRight = new twoThreeTree(item);
+                    myRight.myParent = this;
+                } else { //there is a right child
+                    myRight.insert(item);
+                }
+            } else { //item is between the two keys
+                if (myCenter == null) { //there is no center child
+                    myCenter = new twoThreeTree(item);
+                    myCenter.myParent = this;
+                } else { //there is a center child
+                    myCenter.insert(item);
+                }
+            }
+        }*/
+    }
+
+    // you might want to include other helper methods!
+    public String toString() {
+        return toStringHelper(this, "");
+    }
+    public String toStringHelper (twoThreeTree subTree, String soFar) {
+        String toReturn = "";
+        if (subTree.myRight!=null) {
+            toReturn += toStringHelper(subTree.myRight, " " + soFar);
+        }
+        if (subTree.myCenter!=null) { //there are two keys in the current node
+            toReturn += "\n" + soFar + subTree.mySecondItem + "\n";
+            toReturn += toStringHelper(subTree.myCenter, " " + soFar);
+        }
+        toReturn += "\n" + soFar + subTree.myFirstItem + "\n";
+        if (subTree.myLeft!=null) {
+            toReturn += toStringHelper(subTree.myLeft, " " + soFar);
+        }
+        return toReturn;
+    }
+} 
