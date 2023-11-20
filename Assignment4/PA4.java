@@ -12,10 +12,13 @@ public class PA4 {
             List<Integer> X = new ArrayList<>();
             Utils.readInts(X);
             List<Integer> Y = new ArrayList<>();
+            System.out.println("Second sequence - ");
             Utils.readInts(Y);
             List<Integer> result = new ArrayList<>();
             //TODO: find the Longest common subsequence
-
+            result = longestCommonSubsequence.findLCS(X, Y);
+            System.out.println("LCS: " + result);
+            
             Utils.printInts(result);
         }
         if ("4.2".equals(args[0])) { // Longest increasing subsequence
@@ -23,6 +26,7 @@ public class PA4 {
             Utils.readInts(X);
             List<Integer> result = new ArrayList<>();
             //TODO: find the Longest increasing subsequence
+            result = longestIncreasingSubsequence.findLIS(X);
 
             Utils.printInts(result);
         }
@@ -33,14 +37,19 @@ public class PA4 {
             Utils.readInts(amounts);
             Integer targetAmount = amounts.get(0);
             //TODO: find the smallest number of coins
+            int result = currencyProblem.findMinCoins(denominations, targetAmount);
+
+            System.out.println("Minimum number of coins to make " + 
+                targetAmount + " is " + result);
         }
         if ("4.4".equals(args[0])) { // Maximum rewards
             List<Integer> rewards = new ArrayList<>();;
             Utils.readInts(rewards);
             
             //TODO: find the maximum rewards 
+            int result = maximumRewards.findMaxRewards(rewards);
+
+            System.out.println("Your max win is: " + result);
         }
-
-
     }
 }
