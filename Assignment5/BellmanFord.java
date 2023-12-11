@@ -21,16 +21,15 @@ public class BellmanFord {
 
         Map<Integer, List<Edge>> adjacencyList = new HashMap<>();
 
-        // Read input from file and construct adjacency list
         try (BufferedReader br = new BufferedReader(new FileReader("Assignment5/sample_graph.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split("\\s+");
-                int vertex = Integer.parseInt(parts[0]);
+                String[] parsedLine = line.split("\\s+");
+                int vertex = Integer.parseInt(parsedLine[0]);
                 List<Edge> edges = new ArrayList<>();
 
-                for (int i = 1; i < parts.length; i++) {
-                    String[] edgeParts = parts[i].split(",");
+                for (int i = 1; i < parsedLine.length; i++) {
+                    String[] edgeParts = parsedLine[i].split(",");
                     int neighbor = Integer.parseInt(edgeParts[0]);
                     int weight = Integer.parseInt(edgeParts[1]);
                     edges.add(new Edge(neighbor, weight));
@@ -43,10 +42,8 @@ public class BellmanFord {
             System.exit(1);
         }
 
-        // Find shortest paths using Bellman-Ford algorithm
         int[] distances = bellmanFord(adjacencyList, totalVertices, startVertex);
 
-        // Print the result
         for (int i = 1; i <= totalVertices; i++) {
             if(i > 1) {
                 System.out.print(",");
@@ -60,7 +57,6 @@ public class BellmanFord {
         Arrays.fill(distances, Integer.MAX_VALUE);
         distances[startVertex] = 0;
 
-        // Relax edges repeatedly
         for (int i = 1; i <= totalVertices - 1; i++) {
             for (Map.Entry<Integer, List<Edge>> entry : adjacencyList.entrySet()) {
                 int u = entry.getKey();
@@ -74,7 +70,6 @@ public class BellmanFord {
                 }
             }
         }
-
         return distances;
     }
 

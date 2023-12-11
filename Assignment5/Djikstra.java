@@ -68,7 +68,6 @@ public class Djikstra {
                 }
             }
         }
-
         return distances;
     }
 
