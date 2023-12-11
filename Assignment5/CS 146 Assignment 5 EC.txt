@@ -1,0 +1,79 @@
+﻿Alvin Dang
+12/10/2023
+CS 146
+
+Problem:
+You work at a ski rental place, and you would like to design an algorithm
+that matches skiers to skis. Ideally every skier should get a pair of skis 
+whose length matches their height. Unfortunately, in general this is not 
+possible. So, to measure how good a particular match of ski to skier is, 
+we’ll use the disparity between them, which we’ll define as the absolute 
+value of the difference between the length of the skis and the height of 
+the skier. Now we want a way to assign skis to skiers that minimizes the 
+sum of the disparities. The input to this problem is a list of n skiers 
+(each skier is a pair comprising their name and height) and a list of 
+m ≥ n skis (we know the length of each pair of skis). These arrays are 
+given in sorted order from shortest to tallest (shortest to longest for 
+the skis). Write an optimal algorithm for finding the best possible 
+match between skiers and skis. You can choose to write the code for it 
+but a write up is good as well. Write a short explanation for why this 
+algorithm is optimal.
+
+
+Answer:
+Off the top of my head, I’d imagine a greedy algorithm would work fairly 
+well for this problem. It would function by first creating a list that 
+would store the pairings of skiers to skis. It would then iterate through 
+the pre-sorted arrays of skiers and skis at the same time (starting with 
+the shortest skier and ski). In each iteration, it would assign the 
+current skier to the current ski and then update the assignment list. It 
+would continue until all skiers have been assigned a ski or all skis have 
+been assigned a skier. Such an approach would have a time complexity of 
+O(n, m) where n and m are the array of skiers and skis respectively. The 
+algorithm’s efficiency would rely on the size of the arrays and mainly 
+influenced by the shorter sized array.
+
+
+While the Greedy Algorithm approach is one of simplicity and of low 
+computation intensity, it does have a few potential flaws. It fails to 
+account for the disparity mentioned in the problem where say the most 
+optimal ski for skier 1 is the same as the most optimal ski for skier 2. 
+Except, skier 1 has a second optimal ski that may be ever so slightly 
+(to a miniscule point) less optimal than the ski first referenced. This 
+algorithm would fail to recognize that and assign the first ski to skier 
+1 when a better assignment could have resulted had the algorithm been 
+built to do so.
+
+
+After researching online, I found an approach that handles the disparity 
+inclusion efficiently. The algorithm is known as the “Hungarian Algorithm”. 
+It would be implemented by first taking both arrays (skiers and skis) 
+and creating a matrix out of them where each log represents the disparity 
+between a skier and a ski. Each row would subtract the minimum value in 
+the row from the elements in said row. The same would happen but for 
+the respective column. The algorithm would then find the minimum number 
+of vertical / horizontal lines that are needed to cover all the zeros in 
+the matrix. It would then check to see if the number of lines drawn is 
+equal to m (dimension of the matrix). If it is, the optimal solution was 
+found. Otherwise, it would find the minimum of the uncovered values and 
+subtract the minimum from all the uncovered values and repeat the previous 
+steps until the number of lines is equal to m. Once that has been achieved, 
+assignment will begin from the row or column that has the least number of 
+zeros (possible options) and proceed from there going from least number of 
+zeros to most number of zeros. This approach has a time complexity of O(n^3) 
+where n is the maximum number of skiers and skis.
+
+
+When considering the fact that the “Hungarian Algorithm” has a better overall 
+time complexity (especially as the data set becomes larger) compared to the 
+greedy algorithm approach previously discussed, it becomes clear that this 
+algorithm is quite an optimal choice for this skier and ski matching problem. 
+Add in the fact that the “Hungarian Algorithm” also includes a consideration 
+for disparity and it became perfectly clear to me that this approach would 
+be a great solution to the problem. 
+
+
+Even if the greedy algorithm approach had a disparity check included by, 
+say meeting a ‘disparity threshold’ it may still miss out on better 
+solutions that would be achieved through the use of backtracking and 
+looking ahead.
